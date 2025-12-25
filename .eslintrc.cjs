@@ -40,6 +40,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'no-console': 'warn',
     'no-debugger': 'warn',
+    'tailwindcss/no-custom-classname': 'off',
     'vue/array-bracket-spacing': ['error', 'never'],
     'vue/comma-dangle': ['error', {
       arrays: 'always-multiline',
