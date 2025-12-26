@@ -1,7 +1,7 @@
 {
   "name": "valiant-frontend-coding-challenge",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "type": "module",
   "scripts": {
     "backend": "node ./backend/index.js",
@@ -15,7 +15,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.3",
-    "vue": "^3.4.19"
+    "vue": "^3.5.26"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

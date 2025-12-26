@@ -10,7 +10,7 @@ TODO: Quick scratch breakdown of your to-dos, how you broke up the different tas
 - Create a UI layout for the calculator form using Tailwind styling
 - Create types for the API response return
 - Create a basic form validation utility
-- Refactor the PMT function to use a composable with types
+- Refactor the UsePMT function to use a composable with types
 - Integrate API endpoints to get initial form data
 
 # Loading state, error state management
@@ -23,6 +23,6 @@ TODO: Quick scratch breakdown of your to-dos, how you broke up the different tas
 - Display, style the repayment amount as per the spec provided
 
 # Unit tests, Cypress tests
-- Write unit tests for the provided PMT composable
+- Write unit tests for the provided UsePMT composable
 - Write unit tests for the form validation utility
 

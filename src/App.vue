@@ -19,29 +19,70 @@
   <!-- Main content -->
   <main class="container flex h-full flex-col items-center justify-center self-center">
     <!-- Info alert row -->
-    <div
-      class="mb-4 border-l-4 border-gray-900 bg-primary p-4"
-      role="alert"
+    <AlertCard
+      class="mb-4"
+      alert-type="info"
     >
       <p class="font-medium">
         Using the loan repayment form
       </p>
       <ul class="mt-2 list-inside list-disc text-sm">
         <li>All fields below are required</li>
-        <li>Min loan amount is 1,000 (one thousand)</li>
-        <li>Max loan amount is $20,000,000 (twenty million)</li>
+        <li>Min loan amount is $1,000.00 (one thousand)</li>
+        <li>Max loan amount is $20,000,000.00 (twenty million)</li>
       </ul>
-    </div>
+    </AlertCard>
     <!-- Info alert row -->
 
-    <RepaymentCalculator />
+    <!-- Repayment calculator and error row -->
+    <RepaymentCalculator
+      :loading="isApiLoading"
+      :disabled="isApiError"
+      :api-data="apiData"
+    />
+    <AlertCard
+      v-if="isApiError"
+      class="mt-4"
+      alert-type="error"
+    >
+      <p class="font-medium">
+        Error loading data
+      </p>
+      <p class="mt-2 text-sm">
+        Something went wrong while fetching data. Please refresh the page and try again.
+      </p>
+    </AlertCard>
+    <!-- Repayment calculator and error row -->
   </main>
   <!-- Main content -->
 </template>
 
 <script setup lang="ts">
-// import RepaymentCalculator from '@/components/RepaymentCalculator.vue'
-import RepaymentCalculator from '@/components/organisms/RepaymentCalculator.vue'
+import { ref, onMounted } from 'vue'
+
+// Components
+import AlertCard from './components/atoms/AlertCard.vue'
+import RepaymentCalculator from './components/organisms/RepaymentCalculator.vue'
+
+const isApiLoading = ref(false)
+const isApiError = ref(false)
+const apiData = ref([])
+
+onMounted(async () => {
+  try {
+    isApiLoading.value = true
+    apiData.value = await Promise.all([
+      (await fetch('http://localhost:5000/loan-purposes')).json(),
+      (await fetch('http://localhost:5000/requested-repayment-periods')).json(),
+      (await fetch('http://localhost:5000/requested-term-months')).json(),
+    ])
+  } catch (error) {
+    isApiError.value = true
+  } finally {
+    isApiLoading.value = false
+  }
+})
+
 </script>
 
 <style>
