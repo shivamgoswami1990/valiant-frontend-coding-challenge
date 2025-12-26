@@ -17,7 +17,23 @@
   <!-- Header with logo, title -->
 
   <!-- Main content -->
-  <main class="container flex h-full items-center justify-center self-center">
+  <main class="container flex h-full flex-col items-center justify-center self-center">
+    <!-- Info alert row -->
+    <div
+      class="mb-4 border-l-4 border-gray-900 bg-primary p-4"
+      role="alert"
+    >
+      <p class="font-medium">
+        Using the loan repayment form
+      </p>
+      <ul class="mt-2 list-inside list-disc text-sm">
+        <li>All fields below are required</li>
+        <li>Min loan amount is 1,000 (one thousand)</li>
+        <li>Max loan amount is $20,000,000 (twenty million)</li>
+      </ul>
+    </div>
+    <!-- Info alert row -->
+
     <RepaymentCalculator />
   </main>
   <!-- Main content -->
@@ -25,7 +41,7 @@
 
 <script setup lang="ts">
 // import RepaymentCalculator from '@/components/RepaymentCalculator.vue'
-import RepaymentCalculator from '@/components/RepaymentCalculator.vue'
+import RepaymentCalculator from '@/components/organisms/RepaymentCalculator.vue'
 </script>
 
 <style>

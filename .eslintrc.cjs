@@ -47,6 +47,7 @@ module.exports = {
       objects: 'always-multiline',
       functions: 'never',
     }],
+    'vue/html-self-closing': 'off',
     'vue/object-curly-spacing': ['error', 'always'],
   },
 }
