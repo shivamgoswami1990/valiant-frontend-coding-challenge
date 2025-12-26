@@ -24,6 +24,7 @@
         v-model="loanAmountInputModel"
         class="ml-2"
         :loading="props.loading"
+        :disabled="props.disabled"
         :has-validation-error="isLoanAmountInputError"
         @input="onDebouncedTextInput"
       />
@@ -32,6 +33,7 @@
       <SelectInput
         v-model="loanPurposeInputModel"
         :loading="props.loading"
+        :disabled="props.disabled"
         placeholder-text="Select a loan purpose"
         :options="loanPurposeInputOptions"
         text-key="label"
@@ -45,6 +47,7 @@
       <SelectInput
         v-model="repaymentPeriodsInputModel"
         :loading="props.loading"
+        :disabled="props.disabled"
         class="ml-2"
         placeholder-text="Select a repayment period"
         :options="repaymentPeriodsInputOptions"
@@ -55,6 +58,7 @@
       <SelectInput
         v-model="loanTermInputModel"
         :loading="props.loading"
+        :disabled="props.disabled"
         placeholder-text="Select a loan term"
         :options="loanTermInputOptions"
         text-key="label"
@@ -86,7 +90,7 @@ import SelectInput from '../atoms/SelectInput.vue'
 
 // Composables
 import debounce from '../../composables/useDebounce'
-import PMT from '../../composables/usePMT'
+import { PMT, checkIfValidNumber, convertNumberToCurrency } from '../../composables/usePMT'
 
 const props = defineProps(
   {
@@ -107,14 +111,6 @@ const props = defineProps(
     },
   }
 )
-
-function checkIfValidNumber (value) {
-  return !isNaN(Number(value)) && isFinite(Number(value))
-}
-
-function convertNumberToCurrency (value) {
-  return Intl.NumberFormat('en-US', { style: 'currency', currency: 'AUD' }).format(value)
-}
 
 const loanAmountInputModel = ref('')
 const isLoanAmountInputError = ref(false)

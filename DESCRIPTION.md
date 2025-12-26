@@ -8,21 +8,24 @@ TODO: Quick scratch breakdown of your to-dos, how you broke up the different tas
 
 # Component
 - Create a UI layout for the calculator form using Tailwind styling
-- Create types for the API response return
-- Create a basic form validation utility
-- Refactor the UsePMT function to use a composable with types
+- Create a text input component with model, props
+- Create a select input component with model, props
+- Create a debounce composable to be used with text input
+- Refactor the PMT utility function to a composable
+- Implement basic Atomic Design principles for the above components
 - Integrate API endpoints to get initial form data
 
 # Loading state, error state management
-- Create a UI loading component which shows while API data is loading
-- Create a UI error component which shows if API returns an error
-- Create a retry function, UI feature in case initial data doesn't load from the API
+- Create an alert card component with info, error types
+- Create a loading UI with a spinner which shows while API data is loading
+- Create an error UI alert card which shows if API returns an error
 
 # Finish form UI
-- Dynamic form validation with feedback messages
+- Form validation for text input field with client side error message
+- Integrate the PMT function
 - Display, style the repayment amount as per the spec provided
 
 # Unit tests, Cypress tests
-- Write unit tests for the provided UsePMT composable
-- Write unit tests for the form validation utility
+- Write unit tests for the PMT composable
+- Write Cypress tests
 
